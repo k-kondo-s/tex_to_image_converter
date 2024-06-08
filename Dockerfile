@@ -12,7 +12,7 @@ RUN python3 -m venv /venv
 ENV PATH="/venv/bin:$PATH"
 
 # Gradio と必要な Python パッケージのインストール
-RUN pip install --no-cache-dir gradio pillow
+RUN pip install --no-cache-dir gradio
 
 # 作業ディレクトリの設定
 WORKDIR /app
