@@ -23,6 +23,9 @@ def generate_image(tex_code):
     # TeX ファイルのパス
     tex_file = os.path.join(temp_dir, "formula.tex")
 
+    # tex_code の空行を削除
+    tex_code = "\n".join([line for line in tex_code.split("\n") if line.strip()])
+
     # TeX ソースコードをテンプレートに埋め込む
     tex_source = template.format(tex_code)
 
