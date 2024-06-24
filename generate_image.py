@@ -11,9 +11,7 @@ def generate_image(tex_code):
     \usepackage{{amsmath,amssymb}}
     \begin{{document}}
     \pagestyle{{empty}}
-    \begin{{align*}}
     {}
-    \end{{align*}}
     \end{{document}}
     """
 
