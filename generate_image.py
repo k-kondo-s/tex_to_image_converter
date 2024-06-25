@@ -6,14 +6,15 @@ import gradio as gr
 
 def generate_image(tex_code):
     # テンプレートの定義
-    template = r"""
-    \documentclass[dvipdfmx]{{jsarticle}}
-    \usepackage{{amsmath,amssymb}}
-    \begin{{document}}
-    \pagestyle{{empty}}
-    {}
-    \end{{document}}
-    """
+    template = r"""\documentclass[dvipdfmx]{{jsarticle}}
+\usepackage{{amsmath,amssymb}}
+\begin{{document}}
+\pagestyle{{empty}}
+\begin{{align*}}
+{}
+\end{{align*}}
+\end{{document}}
+"""
 
     # 一時ディレクトリの作成
     temp_dir = tempfile.mkdtemp(prefix="tex_")
@@ -70,4 +71,4 @@ iface = gr.Interface(
 
 # Gradio アプリケーションの起動
 if __name__ == "__main__":
-    iface.launch(server_name="0.0.0.0", server_port=7860)
+    iface.launch(server_name="0.0.0.0", server_port=7860, debug=True)
