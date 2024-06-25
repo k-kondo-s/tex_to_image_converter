@@ -20,7 +20,7 @@ Tex To Image Converter は、TeX のソースコードを画像に変換する�
 
 Docker と Gradio を使って、インタラクティブに TeX のソースコードを画像に変換することもできます。以下の手順を実行してください。
 
-### イメージをビルドする場合
+### イメージをビルドする
 
 1. このリポジトリをクローンまたはダウンロードします。
 
@@ -28,14 +28,6 @@ Docker と Gradio を使って、インタラクティブに TeX のソースコ
 
    ```
    docker build --no-cache -t kenchaaan/texlive-gradio .
-   ```
-
-### Docker Hub からイメージをプルする場合
-
-1. 以下のコマンドを実行して、Docker Hub から `kenchaaan/texlive-gradio` イメージをプルします：
-
-   ```
-   docker pull kenchaaan/texlive-gradio
    ```
 
 ### コンテナの起動
@@ -59,3 +51,10 @@ docker logs -f texlive-gradio-app
 これで、Tex To Image Converter を使って TeX のソースコードを画像に変換できます。シンプルな変換とGradioを使った変換の2つの方法から選んでください。
 
 Docker Hub からイメージをプルする方法を追加したので、自分でイメージをビルドしなくても、公開されているイメージを使ってすぐにコンテナを起動できます。
+
+### 全部のコマンド
+
+```
+docker stop texlive-gradio-app \\
+docker build --no-cache -t kenchaaan/texlive-gradio . && docker run --rm -d -p 7860:7860 --name texlive-gradio-app kenchaaan/texlive-gradio
+```

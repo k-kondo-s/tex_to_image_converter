@@ -66,7 +66,51 @@ iface = gr.Interface(
     ],
     outputs=gr.Image(type="filepath"),
     title="TeX to Image Converter",
-    description="TeX のソースコードを画像に変換します.",
+    description="""
+# TeX to Image Converter
+
+TeX の数式を画像に変換します。
+
+## 注意事項
+
+以下のような命令文は入力しないでください：
+
+- `\\begin{document}`, `\\end{document}`
+- `\\begin{align*}`, `\\end{align*}`
+- `\\begin{equation}`, `\\end{equation}`
+- `\\begin{eqnarray}`, `\\end{eqnarray}`
+- その他の数式を囲む命令文
+
+数式の部分だけを入力してください。
+
+## 正しい入力例
+
+```latex
+\\lim_{n \\to \\infty} \\frac{1}{n 2^n} &= \\lim_{n \\to \\infty} \\left( \\frac{1}{n} \\cdot \\frac{1}{2^n} \\right) \\\\
+                                        &= \\lim_{n \\to \\infty} \\frac{1}{n} \\times \\lim_{n \\to \\infty} \\frac{1}{2^n} \\\\
+                                        &= 0 \\times 0 \\\\
+                                        &= 0
+```
+
+## 間違った入力例
+
+```latex
+\\begin{equation}
+\\lim_{n \\to \\infty} \\frac{1}{n 2^n} = \\lim_{n \\to \\infty} \\left( \\frac{1}{n} \\cdot \\frac{1}{2^n} \\right) \\\\
+= \\lim_{n \\to \\infty} \\frac{1}{n} \\times \\lim_{n \\to \\infty} \\frac{1}{2^n} \\\\
+= 0 \\times 0 \\\\
+= 0
+\\end{equation}
+```
+
+上の間違った例では、`\\begin{equation}` と `\\end{equation}` が含まれていますが、
+これらは不要です。数式の部分だけを入力してください。
+
+## 複数行の数式を入力する場合
+
+- `&` 記号を使って、数式の位置を揃えます。
+- `\\\\` 記号を使って、行を変えます。
+    """,
 )
 
 # Gradio アプリケーションの起動
